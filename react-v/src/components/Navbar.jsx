@@ -98,7 +98,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <nav className="max-w-[1400px] mt-6 flex items-center justify-between mx-4 border border-blue-900 px-6 py-4 rounded-full text-gray-800 text-sm relative bg-white/70 backdrop-blur-md shadow-sm">
+    <nav className="max-w-[1200px] mt-6 flex items-center justify-between mx-4 border border-blue-900 px-6 py-4 rounded-full text-gray-800 text-sm relative bg-white/70 backdrop-blur-md shadow-sm">
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <TicketCheck width="28" height="28" className="text-blue-700" />
@@ -128,10 +128,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <Link
-          to="/my-tickets"
-          className="relative overflow-hidden h-6 group font-medium"
-        >
+        <Link to="/" className="relative overflow-hidden h-6 group font-medium">
           <span className="block group-hover:-translate-y-full transition-transform duration-300">
             My Tickets
           </span>

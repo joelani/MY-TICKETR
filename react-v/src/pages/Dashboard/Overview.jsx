@@ -7,8 +7,12 @@ export default function Overview() {
   const [tickets, setTickets] = useState([]);
 
   useEffect(() => {
-    setTickets(getTickets());
-  }, []);
+    if (user) {
+      setTickets(getTickets());
+    } else {
+      setTickets([]);
+    }
+  }, [user]);
 
   const total = tickets.length;
   const open = tickets.filter((t) => t.status === "open").length;

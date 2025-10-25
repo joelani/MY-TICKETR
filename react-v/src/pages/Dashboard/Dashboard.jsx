@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Tickets from "./Tickets";
 import Overview from "./Overview";
+
 import { LayoutDashboard, Ticket, LogOut, TicketCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -15,9 +16,9 @@ export default function Dashboard() {
       <aside className="w-64 max-md:w-fit max-md:px-2 bg-gray-900 p-4 flex flex-col">
         <Link
           to="/"
-          className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white"
+          className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white hover:text-yellow-400 transition"
         >
-          <TicketCheck size={32} />
+          <TicketCheck class="w-5 h-5 text-yellow-500" />
           <span className=" hidden md:block">My TicketR</span>
         </Link>
         <button
@@ -25,7 +26,7 @@ export default function Dashboard() {
           className={`flex items-center gap-3 text-left text-gray-300 text-lg py-2 px-3 rounded 
               ${active === "overview" ? "bg-gray-700" : "hover:bg-gray-800"}`}
         >
-          <LayoutDashboard size={20} />
+          <LayoutDashboard class="w-7 h-7 text-blue-500" />
           <span className="hidden md:inline">Overview</span>
         </button>
         <button
@@ -33,7 +34,7 @@ export default function Dashboard() {
           className={`flex items-center gap-3 text-left text-gray-300 text-lg py-2 px-3 rounded 
               ${active === "tickets" ? "bg-gray-700" : "hover:bg-gray-800"}`}
         >
-          <Ticket size={20} />
+          <Ticket class="w-7 h-7 text-green-500" />
           <span className="hidden md:inline">Tickets</span>
         </button>
         <button

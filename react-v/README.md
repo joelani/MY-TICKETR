@@ -1,16 +1,97 @@
-# React + Vite
+# 🧩 React Version — Ticket Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📖 Overview
 
-Currently, two official plugins are available:
+A robust **Ticket Management Web Application** built with **React** and **Tailwind CSS**, featuring user authentication, ticket creation, editing, and deletion — all managed locally using **localStorage**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This app allows multiple users to create accounts, log in, and manage their personal tickets securely within the same browser session.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🏠 Landing Page with CTA buttons ("Login" & "Get Started")
+- 🔐 Authentication System (Signup, Login, Logout)
+- 🎫 Ticket Dashboard (Add, Edit, Delete tickets)
+- 🧠 Persistent Sessions using localStorage
+- 🎨 Modern UI/UX with Tailwind CSS and Lucide Icons
+- ⚡ Responsive Design (Desktop & Mobile friendly)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **React** (Vite)
+- **Tailwind CSS**
+- **Lucide-React**
+- **localStorage**
+
+---
+
+## 📂 Folder Structure
+
+```
+src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── TicketCard.jsx
+│   └── TicketForm.jsx
+├── context/
+│   └── AuthContext.jsx
+├── pages/
+│   ├── LandingPage.jsx
+│   ├── Login.jsx
+│   ├── Signup.jsx
+│   └── Dashboard.jsx
+├── services/
+│   └── ticketService.js
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/react-ticket-app.git
+cd react-ticket-app
+
+# Install dependencies
+npm install
+
+# Start the app
+npm run dev
+```
+
+---
+
+## 🧠 How Data Works
+
+- User info and tickets are saved in `localStorage`.
+- Each ticket is tied to a user’s email.
+- When a user logs in, only their tickets are displayed.
+
+---
+
+## 🔑 Example Login Flow
+
+1. Sign up with a name, email, and password
+2. You’ll be prompted to log in
+3. After login, you’ll see your personalized dashboard
+4. Log out anytime — your tickets remain saved locally
+
+---
+
+## 📸 Screenshots
+
+## ![Dashboard](../assets/screenshots/dashboard.png)
+
+## ![Landing page](../assets/screenshots/landingpage.png)
+
+## 👨‍💻 Author
+
+**Joseph Olaniyi**  
+Frontend Developer | React | Vue | Tailwind  
+[LinkedIn](#) • [GitHub](#)
