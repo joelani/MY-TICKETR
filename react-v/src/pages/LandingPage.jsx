@@ -3,10 +3,10 @@ import Hero from "../components/Hero";
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-between bg-linear-to-b from-blue-100 to-white pt-6 relative overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center justify-between bg-linear-to-b from-blue-100 to-white pt-6  overflow-hidden">
       {/* Decorative Circles */}
-      <div className="absolute top-10 left-10 w-24 h-24 bg-blue-300 rounded-full opacity-30 blur-2xl"></div>
-      <div className="absolute bottom-20 right-20 w-32 h-32 bg-purple-300 rounded-full opacity-30 blur-2xl"></div>
+      {/* <div className="absolute top-10 left-10 w-24 h-24 bg-blue-300 rounded-full opacity-30 blur-2xl"></div>
+      <div className="absolute bottom-20 right-20 w-32 h-32 bg-purple-300 rounded-full opacity-30 blur-2xl"></div> */}
       {/* Hero Section */}
       <Hero />
       {/* Features Section */}
