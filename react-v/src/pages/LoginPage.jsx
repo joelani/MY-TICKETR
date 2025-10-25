@@ -1,27 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import AuthLayout from "./AuthLayout";
+// import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import AuthLayout from "./AuthLayout";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { login, user } = useAuth();
   const [form, setForm] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    if (user) navigate("/dashboard");
+  }, [user, navigate]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("ticketapp_users")) || [];
-    const user = users.find(
-      (u) => u.email === form.email && u.password === form.password
-    );
-
-    if (!user) return toast.error("Invalid credentials. Try again.");
-
-    localStorage.setItem("ticketapp_session", JSON.stringify(user));
+    const res = login(form.email, form.password);
+    if (!res.success) return toast.error(res.message);
     toast.success("Login successful!");
-    navigate("/dashboard");
   };
 
   return (
