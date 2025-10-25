@@ -12,13 +12,13 @@ const Hero = () => {
 
       <div className="flex gap-4">
         <Link
-          to="/auth/login"
+          to="/login"
           className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow transition"
         >
           Login
         </Link>
         <Link
-          to="/auth/signup"
+          to="/signup"
           className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg shadow transition"
         >
           Get Started

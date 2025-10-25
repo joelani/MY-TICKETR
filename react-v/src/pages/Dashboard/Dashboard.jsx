@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Tickets from "./Tickets";
 import Overview from "./Overview";
+import { LayoutDashboard, Ticket, LogOut, TicketCheck } from "lucide-react";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -10,29 +11,33 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-900 p-4 flex flex-col">
-        <h2 className="text-xl font-bold mb-6 text-white">Dashboard</h2>
+      <aside className="w-64 max-md:w-fit max-md:px-2 bg-gray-900 p-4 flex flex-col">
+        <h2 className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white">
+          <TicketCheck size={32} />
+          <span className=" hidden md:block">My TicketR</span>
+        </h2>
         <button
           onClick={() => setActive("overview")}
-          className={`text-left text-gray-300 text-lg py-2 px-3 rounded ${
-            active === "overview" ? "bg-gray-700" : "hover:bg-gray-800"
-          }`}
+          className={`flex items-center gap-3 text-left text-gray-300 text-lg py-2 px-3 rounded 
+              ${active === "overview" ? "bg-gray-700" : "hover:bg-gray-800"}`}
         >
-          Overview
+          <LayoutDashboard size={20} />
+          <span className="hidden md:inline">Overview</span>
         </button>
         <button
           onClick={() => setActive("tickets")}
-          className={`text-left text-gray-300 text-lg py-2 px-3 rounded ${
-            active === "tickets" ? "bg-gray-700" : "hover:bg-gray-800"
-          }`}
+          className={`flex items-center gap-3 text-left text-gray-300 text-lg py-2 px-3 rounded 
+              ${active === "tickets" ? "bg-gray-700" : "hover:bg-gray-800"}`}
         >
-          Tickets
+          <Ticket size={20} />
+          <span className="hidden md:inline">Tickets</span>
         </button>
         <button
           onClick={logout}
-          className="mt-auto text-left py-2 px-3 rounded hover:bg-red-700 text-red-400"
+          className="mt-auto flex items-center gap-3 text-left py-2 px-3 rounded hover:bg-red-700 text-red-400"
         >
-          Logout
+          <LogOut size={20} />
+          <span className="hidden md:inline">Logout</span>
         </button>
       </aside>
 
