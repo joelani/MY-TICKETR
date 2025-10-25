@@ -21,7 +21,7 @@ export default function SignupPage() {
     localStorage.setItem("ticketapp_users", JSON.stringify(users));
 
     toast.success("Account created! You can now log in.");
-    navigate("/auth/login");
+    navigate("/login");
   };
 
   return (

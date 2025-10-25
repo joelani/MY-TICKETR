@@ -24,12 +24,6 @@ export default function LandingPage() {
           ></path>
         </svg>
       </div>{" "}
-      {/* Footer */}
-      <footer className="text-center py-6 bg-blue-100 w-full">
-        <p className="text-sm text-gray-600">
-          © 2025 TicketFlow. All rights reserved.
-        </p>
-      </footer>
     </main>
   );
 }
