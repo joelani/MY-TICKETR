@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import Tickets from "./Tickets";
 import Overview from "./Overview";
 import { LayoutDashboard, Ticket, LogOut, TicketCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
@@ -12,10 +13,13 @@ export default function Dashboard() {
     <div className="min-h-screen flex">
       {/* Sidebar */}
       <aside className="w-64 max-md:w-fit max-md:px-2 bg-gray-900 p-4 flex flex-col">
-        <h2 className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white">
+        <Link
+          to="/"
+          className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white"
+        >
           <TicketCheck size={32} />
           <span className=" hidden md:block">My TicketR</span>
-        </h2>
+        </Link>
         <button
           onClick={() => setActive("overview")}
           className={`flex items-center gap-3 text-left text-gray-300 text-lg py-2 px-3 rounded 
@@ -43,9 +47,9 @@ export default function Dashboard() {
 
       {/* Main Section */}
       <main className="flex-1 bg-gray-950 text-white p-6">
-        {active === "overview" && (
+        {/* {active === "overview" && (
           <h1 className="text-2xl font-bold">Welcome, {user?.name}</h1>
-        )}
+        )} */}
         {active === "overview" && <Overview />}
         {active === "tickets" && <Tickets />}
       </main>
