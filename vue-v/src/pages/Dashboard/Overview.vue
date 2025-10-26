@@ -40,7 +40,11 @@
               <span :class="statusClass(t.status)">{{ formatStatus(t.status) }}</span>
             </td>
             <td class="p-3 text-sm text-gray-400">
-              {{ new Date(t.createdAt).toLocaleDateString() }}
+              {{
+                t.createdAt
+                  ? new Date(t.createdAt).toLocaleDateString()
+                  : new Date(t.id * 1).toLocaleDateString()
+              }}
             </td>
           </tr>
         </tbody>
