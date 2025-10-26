@@ -8,9 +8,6 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Tickets from "./pages/Dashboard/Tickets";
-import Profile from "./pages/Dashboard/Profile";
-import Settings from "./pages/Dashboard/Settings";
-import DashboardHome from "./pages/Dashboard/DashboardHome";
 
 function App() {
   const location = useLocation();
@@ -25,14 +22,6 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        {/* <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        /> */}
 
         <Route
           path="/dashboard"
@@ -45,8 +34,8 @@ function App() {
           {/* Nested routes inside the dashboard */}
           <Route index element={<Dashboard />} /> {/* summary stats page */}
           <Route path="tickets" element={<Tickets />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="settings" element={<Settings />} />
+          {/* <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} /> */}
         </Route>
       </Routes>
       {!hideNavbarFooter && <Footer />}

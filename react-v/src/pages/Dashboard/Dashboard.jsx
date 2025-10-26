@@ -35,7 +35,7 @@ export default function Dashboard() {
               ${active === "tickets" ? "bg-gray-700" : "hover:bg-gray-800"}`}
         >
           <Ticket class="w-7 h-7 text-green-500" />
-          <span className="hidden md:inline">Tickets</span>
+          <span className="hidden md:inline">Manage Tickets</span>
         </button>
         <button
           onClick={logout}
