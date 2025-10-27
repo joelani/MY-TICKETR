@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Tickets from "./Tickets";
 import Overview from "./Overview";
 
 import { LayoutDashboard, Ticket, LogOut, TicketCheck } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const [active, setActive] = useState("overview");
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.defaultTab === "tickets") {
+      setActive("tickets");
+    }
+  }, [location.state]);
 
   return (
     <div className="min-h-screen flex">
@@ -18,7 +25,7 @@ export default function Dashboard() {
           to="/"
           className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white hover:text-yellow-400 transition"
         >
-          <TicketCheck class="w-5 h-5 text-yellow-500" />
+          <TicketCheck class="w-7 h-7 mx-auto text-yellow-500" />
           <span className=" hidden md:block">My TicketR</span>
         </Link>
         <button

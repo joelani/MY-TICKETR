@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-// import {
-//   getTickets,
-//   addTicket,
-//   updateTicket,
-//   deleteTicket,
-// } from "../services/ticketService";
+
 import { toast } from "react-hot-toast";
 import {
   getTickets,
