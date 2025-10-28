@@ -1,0 +1,125 @@
+{% extends "layout.twig" %}
+
+{% block title %}My TicketR{% endblock %}
+
+{% block content %}
+<!-- Navbar -->
+<nav class="flex items-center justify-between px-8 py-4 border border-slate-200 bg-white/80 backdrop-blur-md rounded-full shadow-sm mx-6 mt-4 max-w-5xl mx-auto">
+  <a href="#" class="flex items-center gap-2 text-xl font-semibold text-blue-700">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+    </svg>
+    My TicketR
+  </a>
+
+  <div class="hidden md:flex items-center gap-6 text-slate-700">
+    <a href="?page=home" class="hover:text-blue-600 transition">Home</a>
+    <a href="?page=dashboard" class="hover:text-blue-600 transition">Dashboard</a>
+    <a href="?page=dashboard" class="hover:text-blue-600 transition">My Tickets</a>
+  </div>
+
+  <button onclick="window.location.href='?page=login'" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition">Get Started</button>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden">
+    <button id="menu-toggle" class="text-blue-700 focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="hidden md:hidden flex flex-col items-center gap-4 bg-white shadow-md rounded-xl mx-8 mt-2 py-4">
+  <a href="#" class="text-blue-700 font-medium">Home</a>
+  <a href="#" class="text-blue-700 font-medium">Dashboard</a>
+  <a href="#" class="text-blue-700 font-medium">My Tickets</a>
+  <button class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition">Get Started</button>
+</div>
+
+<!-- Hero Section -->
+<section class="relative text-center py-20 overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+  <div class="absolute inset-0 flex items-center justify-center opacity-20">
+    <div class="bg-yellow-300 w-32 h-32 rounded-full absolute top-40 left-1/4 blur-3xl"></div>
+    <div class="bg-blue-300 w-48 h-48 rounded-full absolute top-20 right-1/3 blur-2xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-2xl mx-auto px-6">
+    <h1 class="text-5xl font-extrabold text-slate-900 mb-4">My TicketR</h1>
+    <p class="text-lg text-slate-600 mb-8">
+      Streamline your workflow and manage tickets effortlessly with our all-in-one management system.
+    </p>
+
+    <div class="flex justify-center gap-4">
+      <a href="?page=login" class="px-6 py-3 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700 transition">Login</a>
+      <button onclick="window.location.href='?page=login'" class="px-6 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">Get Started</button>
+    </div>
+  </div>
+
+  <img src="/images/wave.svg" class="absolute bottom-0 left-0 w-full" alt="wave background" />
+</section>
+
+<!-- Feature Section -->
+<section class="text-center py-16 bg-gradient-to-b from-white to-blue-50">
+  <h2 class="text-3xl font-bold text-slate-800 mb-2">Create Tickets</h2>
+  <p class="text-slate-500 mb-10">Easily submit new tickets with a simple form and smart validation.</p>
+
+  <div class="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto px-6">
+    <div class="bg-white border border-orange-200 rounded-xl p-6 shadow hover:shadow-lg transition">
+      <div class="flex flex-col items-center">
+        <div class="bg-orange-100 text-orange-500 p-3 rounded-full mb-3">
+          📷
+        </div>
+        <h3 class="font-semibold text-slate-800 mb-2">Track Progress</h3>
+        <p class="text-slate-500 text-sm">Monitor open, in-progress, and closed tickets all in one place.</p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-green-200 rounded-xl p-6 shadow hover:shadow-lg transition">
+      <div class="flex flex-col items-center">
+        <div class="bg-green-100 text-green-500 p-3 rounded-full mb-3">
+          📷
+        </div>
+        <h3 class="font-semibold text-slate-800 mb-2">Stay Notified</h3>
+        <p class="text-slate-500 text-sm">Get instant feedback and notifications for all ticket actions.</p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-orange-200 rounded-xl p-6 shadow hover:shadow-lg transition">
+      <div class="flex flex-col items-center">
+        <div class="bg-orange-100 text-orange-500 p-3 rounded-full mb-3">
+          📷
+        </div>
+        <h3 class="font-semibold text-slate-800 mb-2">Customizable Reports</h3>
+        <p class="text-slate-500 text-sm">Export professional, audit-ready reports for tax or internal review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-blue-100 text-center py-10 mt-12">
+  <div class="flex justify-center gap-6 mb-6 text-slate-700">
+    <a href="?page=home" class="hover:text-blue-600">Home</a>
+    <a href="?page=login" class="hover:text-blue-600">Tickets</a>
+    <a href="?page=dashboard" class="hover:text-blue-600">Services</a>
+  </div>
+
+  <div class="flex justify-center gap-6 text-blue-600 text-xl mb-4">
+    <a href="#">🐦</a>
+    <a href="#">📷</a>
+    <a href="#">💼</a>
+    <a href="#">🍷</a>
+  </div>
+
+  <p class="text-sm text-slate-600">Copyright © 2025 Lani. All rights reserved.</p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+    "name": "joelani/twig-v",
+    "description": "Twig version of TicketR app",
+    "authors": [
+        {
+            "name": "Joseph Olaniyi"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.21"
+    }
+}
