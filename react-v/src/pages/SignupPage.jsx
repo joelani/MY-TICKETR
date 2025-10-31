@@ -5,30 +5,20 @@ import toast from "react-hot-toast";
 
 export default function SignupPage() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const users = JSON.parse(localStorage.getItem("ticketapp_users")) || [];
-
-  //   const exists = users.some((u) => u.email === form.email);
-  //   if (exists) return toast.error("User already exists!");
-
-  //   users.push(form);
-  //   localStorage.setItem("ticketapp_users", JSON.stringify(users));
-
-  //   toast.success("Account created! You can now log in.");
-  //   navigate("/login");
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // --- Password validation rules ---
-    const password = form.password;
     const passwordRules = [
       {
         regex: /.{8,}/,
@@ -46,10 +36,16 @@ export default function SignupPage() {
     ];
 
     for (const rule of passwordRules) {
-      if (!rule.regex.test(password)) {
+      if (!rule.regex.test(form.password)) {
         toast.error(rule.message);
         return;
       }
+    }
+
+    // --- Confirm password check ---
+    if (form.password !== form.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
     }
 
     // --- Check if user already exists ---
@@ -58,7 +54,7 @@ export default function SignupPage() {
     if (exists) return toast.error("User already exists!");
 
     // --- Save user ---
-    users.push(form);
+    users.push({ name: form.name, email: form.email, password: form.password });
     localStorage.setItem("ticketapp_users", JSON.stringify(users));
 
     toast.success("Account created! You can now log in.");
@@ -68,6 +64,7 @@ export default function SignupPage() {
   return (
     <AuthLayout title="Create Account">
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Name */}
         <div>
           <label className="block text-gray-700 mb-1">Name</label>
           <input
@@ -79,6 +76,8 @@ export default function SignupPage() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
+        {/* Email */}
         <div>
           <label className="block text-gray-700 mb-1">Email</label>
           <input
@@ -90,6 +89,8 @@ export default function SignupPage() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
+        {/* Password */}
         <div>
           <label className="block text-gray-700 mb-1">Password</label>
           <input
@@ -101,6 +102,20 @@ export default function SignupPage() {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
+        {/* Confirm Password */}
+        <div>
+          <label className="block text-gray-700 mb-1">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={form.confirmPassword}
+            onChange={handleChange}
+            required
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
