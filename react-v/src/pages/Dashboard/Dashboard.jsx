@@ -25,7 +25,7 @@ export default function Dashboard() {
           to="/"
           className="flex items-center gap-3 text-left text-xl font-bold mb-8 text-white hover:text-yellow-400 transition"
         >
-          <TicketCheck class="w-7 h-7 mx-auto text-yellow-500" />
+          <TicketCheck class="w-7 h-7 max-md:mx-auto text-yellow-500" />
           <span className=" hidden md:block">My TicketR</span>
         </Link>
         <button
