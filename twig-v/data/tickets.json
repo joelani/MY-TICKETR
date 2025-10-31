@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Payment not processed",
+    "status": "Open",
+    "priority": "High",
+    "created_at": "2025-10-20",
+    "user_email": "demo@example.com"
+  },
+  {
+    "id": 2,
+    "title": "Login issue",
+    "status": "Closed",
+    "priority": "Medium",
+    "created_at": "2025-10-21",
+    "user_email": "jane@company.com"
+  }
+]

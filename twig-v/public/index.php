@@ -5,58 +5,53 @@ session_start();
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
-// Setup Twig
+// --- Setup Twig ---
 $loader = new FilesystemLoader(__DIR__ . '/../templates');
 $twig = new Environment($loader, [
     'cache' => false, // change to /cache in production
 ]);
 
-// --- Simple Router ---
-$page = $_GET['page'] ?? 'home';
-$error = $_GET['error'] ?? null;
-$success = $_GET['success'] ?? null;
-
 // --- Base Context ---
 $context = [
     'user' => $_SESSION['user'] ?? null,
-    'error' => $error,
-    'success' => $success
+    'error' => $_GET['error'] ?? null,
+    'success' => $_GET['success'] ?? null
 ];
 
-// --- Mock data for dashboard ---
-$sampleStats = [
-    'open_tickets' => 4,
-    'closed_tickets' => 7,
-    'pending_tickets' => 2
-];
+// --- Simple Router ---
+$page = $_GET['page'] ?? 'home';
+$allowedPages = ['home', 'login', 'signup', 'dashboard', 'logout'];
+if (!in_array($page, $allowedPages)) {
+    $page = 'home';
+}
 
-$sampleTickets = [
-    ['id' => 101, 'title' => 'Login issue', 'status' => 'open', 'created_at' => '2025-10-25'],
-    ['id' => 102, 'title' => 'Payment not processing', 'status' => 'pending', 'created_at' => '2025-10-26'],
-    ['id' => 103, 'title' => 'Page loading slowly', 'status' => 'closed', 'created_at' => '2025-10-27'],
-];
-
-// --- Routing Logic ---
 switch ($page) {
     case 'login':
-        echo $twig->render('login.twig', $context);
+        $template = 'login.twig';
         break;
 
     case 'signup':
-        echo $twig->render('signup.twig', $context);
+        $template = 'signup.twig';
         break;
 
     case 'dashboard':
         if (!isset($_SESSION['user'])) {
-            header('Location: ?page=login');
+            header('Location: ?page=login&error=Please log in first');
             exit;
         }
 
-        // Add mock dashboard data
-        $context['stats'] = $sampleStats;
-        $context['tickets'] = $sampleTickets;
-
-        echo $twig->render('dashboard.twig', $context);
+        // Mock dashboard data
+        $context['stats'] = [
+            'open_tickets' => 4,
+            'closed_tickets' => 7,
+            'pending_tickets' => 2
+        ];
+        $context['tickets'] = [
+            ['id' => 101, 'title' => 'Login issue', 'status' => 'open', 'created_at' => '2025-10-25'],
+            ['id' => 102, 'title' => 'Payment not processing', 'status' => 'pending', 'created_at' => '2025-10-26'],
+            ['id' => 103, 'title' => 'Page loading slowly', 'status' => 'closed', 'created_at' => '2025-10-27'],
+        ];
+        $template = 'dashboard.twig';
         break;
 
     case 'logout':
@@ -65,6 +60,9 @@ switch ($page) {
         exit;
 
     default:
-        echo $twig->render('home.twig', $context);
+        $template = 'home.twig';
         break;
 }
+$context['base_url'] = '/public/';
+
+echo $twig->render($template, $context);

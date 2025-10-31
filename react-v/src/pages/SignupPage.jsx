@@ -10,13 +10,54 @@ export default function SignupPage() {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const users = JSON.parse(localStorage.getItem("ticketapp_users")) || [];
+
+  //   const exists = users.some((u) => u.email === form.email);
+  //   if (exists) return toast.error("User already exists!");
+
+  //   users.push(form);
+  //   localStorage.setItem("ticketapp_users", JSON.stringify(users));
+
+  //   toast.success("Account created! You can now log in.");
+  //   navigate("/login");
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("ticketapp_users")) || [];
 
+    // --- Password validation rules ---
+    const password = form.password;
+    const passwordRules = [
+      {
+        regex: /.{8,}/,
+        message: "Password must be at least 8 characters long",
+      },
+      {
+        regex: /[A-Z]/,
+        message: "Password must contain at least one uppercase letter",
+      },
+      {
+        regex: /[a-z]/,
+        message: "Password must contain at least one lowercase letter",
+      },
+      { regex: /\d/, message: "Password must contain at least one number" },
+    ];
+
+    for (const rule of passwordRules) {
+      if (!rule.regex.test(password)) {
+        toast.error(rule.message);
+        return;
+      }
+    }
+
+    // --- Check if user already exists ---
+    const users = JSON.parse(localStorage.getItem("ticketapp_users")) || [];
     const exists = users.some((u) => u.email === form.email);
     if (exists) return toast.error("User already exists!");
 
+    // --- Save user ---
     users.push(form);
     localStorage.setItem("ticketapp_users", JSON.stringify(users));
 
